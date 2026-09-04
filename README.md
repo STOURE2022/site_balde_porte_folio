@@ -1,16 +1,25 @@
 # Site officiel — Secuna Baldé
 
-Site portfolio premium avec **mode édition intégré** : vous pouvez modifier les textes, changer les photos et ajouter des sections sans toucher au code.
+Site portfolio premium **bilingue (portugais / français)** avec **mode édition intégré** : vous pouvez modifier les textes, changer les photos et ajouter des sections sans toucher au code.
 
 ## Structure
 
 ```
-index.html        → la page du site
-css/style.css     → le design
+index.html        → la page principale (PORTUGAIS — langue officielle)
+fr/index.html     → la version française
+css/style.css     → le design (commun aux deux langues)
 js/main.js        → animations et navigation
 js/editor.js      → le mode édition
 assets/           → photos (portrait, visuel environnement)
+404.html          → page d'erreur
+_headers          → en-têtes de sécurité (Cloudflare Pages / Netlify)
+GUIDE-DEPLOIEMENT.md → guide de mise en ligne (Phase 1)
 ```
+
+## Langues
+
+- Le sélecteur **PT | FR** est dans le menu de navigation.
+- **Chaque langue se modifie séparément** : ouvrez la page PT ou la page FR, activez le mode édition, modifiez, exportez. Le fichier exporté depuis la page française doit remplacer `fr/index.html` ; celui exporté depuis la page portugaise remplace `index.html` à la racine.
 
 ## Ouvrir le site
 

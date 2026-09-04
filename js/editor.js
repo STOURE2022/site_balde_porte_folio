@@ -11,7 +11,11 @@
 (function () {
   "use strict";
 
-  var LS_KEY = "sb-site-v1";
+  /* Une sauvegarde distincte par langue (PT à la racine, FR dans fr/) */
+  var LANG = document.documentElement.lang || "pt";
+  var LS_KEY = "sb-site-v1-" + LANG;
+  /* Préfixe des chemins (défini par la page FR via window.SB_BASE = '../') */
+  var BASE = window.SB_BASE || "";
   var REGIONS = ["siteHeader", "pageMain", "pageFooter"];
   var editing = false;
   var saveTimer = null;
@@ -160,19 +164,21 @@
     var edStyle = head.querySelector("#ed-style");
     if (edStyle) edStyle.remove();
     var flag = document.querySelector(".flag-bar");
+    var baseTag = BASE ? "<script>window.SB_BASE = '" + BASE + "';<\/script>\n" : "";
     var html =
-      "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n" + head.innerHTML + "\n</head>\n<body>\n\n" +
+      '<!DOCTYPE html>\n<html lang="' + LANG + '">\n<head>\n' + head.innerHTML + "\n</head>\n<body>\n\n" +
       (flag ? flag.outerHTML : "") + "\n\n" +
       '<header class="site-header" id="siteHeader">' + regions.siteHeader + "</header>\n\n" +
       '<main id="pageMain">' + regions.pageMain + "</main>\n\n" +
       '<footer class="site-footer" id="pageFooter">' + regions.pageFooter + "</footer>\n\n" +
-      '<script src="js/editor.js"><\/script>\n' +
-      '<script src="js/main.js"><\/script>\n' +
+      baseTag +
+      '<script src="' + BASE + 'js/editor.js"><\/script>\n' +
+      '<script src="' + BASE + 'js/main.js"><\/script>\n' +
       "</body>\n</html>\n";
     var blob = new Blob([html], { type: "text/html;charset=utf-8" });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "index.html";
+    a.download = "index.html"; /* pour la page FR : à placer dans le dossier fr/ */
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -298,7 +304,7 @@
     inner += "</div></div>";
     sec.innerHTML = inner;
 
-    var contact = document.getElementById("contact");
+    var contact = document.getElementById("contact") || document.getElementById("contacto");
     if (contact) contact.before(sec); else document.getElementById("pageMain").appendChild(sec);
 
     if (data.title) addNavLink(data.title, sec.id);
