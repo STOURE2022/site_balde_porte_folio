@@ -1,0 +1,11 @@
+{
+  // Configuration Cloudflare Workers — site statique Secuna Baldé.
+  // Seul le dossier publication/ (fichiers publics) est servi en ligne :
+  // les guides internes et signatures ne sont jamais publiés.
+  "name": "site-balde-porte-folio",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./publication",
+    "not_found_handling": "404-page"
+  }
+}
