@@ -30,6 +30,20 @@ Cloudflare gère le DNS, le HTTPS, la protection contre les attaques (DDoS) et l
 
 ## Étape 3 — Mettre le site en ligne (Cloudflare Pages, gratuit)
 
+### Option A — Connexion GitHub (recommandée : publication automatique)
+
+Le code est sur GitHub : `STOURE2022/site_balde_porte_folio` (dépôt privé).
+
+1. Tableau de bord Cloudflare : **Workers & Pages → Create → Pages → Connect to Git**.
+2. Autoriser Cloudflare à accéder au dépôt `site_balde_porte_folio`.
+3. Configuration du build :
+   - **Build command** : `bash build.sh`
+   - **Build output directory** : `publication`
+4. Deploy. Ensuite, **chaque `git push` publie automatiquement le site** — les guides internes et signatures ne sont jamais publiés (le script ne copie que les fichiers publics).
+5. Passer à l'ajout du domaine (point 5 ci-dessous).
+
+### Option B — Téléversement direct (sans GitHub)
+
 1. Dans le tableau de bord Cloudflare : **Workers & Pages → Create → Pages → Upload assets** (téléversement direct).
 2. Nom du projet : `secunabalde`.
 3. Glisser-déposer **uniquement les fichiers du site** : `index.html`, `404.html`, `_headers`, `css/`, `js/`, `assets/`, `fr/`.
