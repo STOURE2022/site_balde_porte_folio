@@ -32,7 +32,9 @@ Cloudflare gère le DNS, le HTTPS, la protection contre les attaques (DDoS) et l
 
 1. Dans le tableau de bord Cloudflare : **Workers & Pages → Create → Pages → Upload assets** (téléversement direct).
 2. Nom du projet : `secunabalde`.
-3. Glisser-déposer **tout le contenu du dossier du site** (`index.html`, `404.html`, `_headers`, `css/`, `js/`, `assets/`).
+3. Glisser-déposer **uniquement les fichiers du site** : `index.html`, `404.html`, `_headers`, `css/`, `js/`, `assets/`, `fr/`.
+   ⚠️ **Ne pas envoyer** les documents internes (`GUIDE-*.md`, `README.md`, dossier `emails/`) — tout ce qui est téléversé devient public sur le site.
+   💡 **Le plus simple** : double-cliquer sur `preparer-publication.bat` (dans le dossier du site) — il crée automatiquement un dossier `publication/` ne contenant que les fichiers publics ; glissez-déposez ce dossier. À refaire avant chaque mise à jour du site.
 4. Le site est en ligne sur `secunabalde.pages.dev` → vérifier que tout s'affiche.
 5. Onglet **Custom domains** → ajouter `secunabalde.com` et `www.secunabalde.com` → Cloudflare configure le DNS et le HTTPS automatiquement.
 

@@ -3,6 +3,9 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
+# Dossier de publication (regenere par preparer-publication.bat)
+publication/
+
 # Fichiers temporaires
 *.tmp
 *.bak
